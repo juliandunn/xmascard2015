@@ -1,0 +1,7 @@
+[package]
+name = "xmascard2016"
+version = "0.1.0"
+authors = ["Julian C. Dunn <jdunn@chef.io>"]
+
+[dependencies]
+time = "0.1"

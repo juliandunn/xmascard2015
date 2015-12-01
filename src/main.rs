@@ -1,22 +1,32 @@
-extern crate time;
+use std::io;
 
 fn main() {
-    let gifts = ["Partridge in a Pear Tree",
-                 "Turtle Doves",
-                 "French Hens",
-                 "Calling Birds",
-                 "Gold Rings",
-                 "Geese a-Laying",
-                 "Swans a-Swimming",
-                 "Maids a-Milking",
-                 "Ladies Dancing",
-                 "Lords a-Leaping",
-                 "Pipers Piping",
-                 "Drummers Drumming"];
+    let mut a = String::new();
+    io::stdin().read_line(&mut a).ok().expect("Failed to read line");
 
-    println!("The time is now {:?}", time::now_utc());
+    let a: i32 = match a.trim().parse() {
+                 Ok(num) => num,
+                 Err(_) => { panic!("not a number!"); }
+    };
+    let w = a * 2 + 5;
+    for x in 0..a {
+      for y in 0..3 {
+        for z in 0..a-y-x+1 {
+          print!(" ");
+        }
+        for z in 0..(x*2)+((y*2)+1) {
+          print!(".");
+        }
+        println!("");
+      }
+    }
+    for x in 0..w/5+1 {
+      for z in 0..w/3 {
+        print!(" ");
+      }
+      for z in 0..w-(w/3+1)*2 {
+        print!("#");
+      }
+      println!("");
+    }
 }
-
-// Return a concatenated string of the gifts for this day
-//fn process_gifts(day: i32) -> str {
-//}
